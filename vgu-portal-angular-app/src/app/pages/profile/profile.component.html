@@ -1,0 +1,61 @@
+<mat-card class="user-information flex mt-3 mb-3">
+    <span class="toolbar-btn">
+        <button mat-icon-button routerLink="/student/information" class="return-btn">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span class="d-flex align-items-center justify-content-between toolbar-btn-right">
+            <button mat-icon-button *ngIf="isDisabled; else editModeOff" (click)="enableEdit()" class="edit-btn">
+                <mat-icon>mode_edit</mat-icon>
+            </button>
+            <button mat-icon-button color="#00AFAA" (click)="save()" class="save-btn">
+                <mat-icon>save_as</mat-icon>
+            </button>
+        </span>
+    </span>
+    <ng-template #editModeOff>
+        <button mat-icon-button color="#00AFAA" (click)="cancel()" class="edit-off-btn">
+            <mat-icon>edit_off</mat-icon>
+        </button>
+    </ng-template>
+    <mat-card-content class="grid grid-cols">
+        <div class="profile-toolbar-container">
+            <app-avatar></app-avatar>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="profile-information-container">
+            <form [formGroup]="profileForm" class="py-5">
+                <div *ngFor="let item of displayedFields" class="grid grid-cols-[150px,0.75fr]">
+                    @if (item.key != 'gender' && item.key != 'dateOfBirth') {
+                    <mat-label>{{ item.label }}</mat-label>
+                    <mat-form-field appearance="fill">
+                        <input matInput type="text" [formControlName]="item.key">
+                        <mat-error *ngIf="profileForm.controls[item.key].hasError('required')">
+                            {{ item.label }} is required
+                        </mat-error>
+                    </mat-form-field>
+                    }
+                    @else if (item.key == 'gender') {
+                    <mat-label class="gender">{{ item.label }}</mat-label>
+                    <mat-radio-group aria-label="Select an option" [formControlName]="item.key">
+                        <mat-radio-button>Male</mat-radio-button>
+                        <mat-radio-button>Female</mat-radio-button>
+                        <mat-radio-button>Others</mat-radio-button>
+                        <mat-error *ngIf="profileForm.controls[item.key].hasError('required')">
+                            {{ item.label }} is required
+                        </mat-error>
+                    </mat-radio-group>
+                    } @else {
+                    <mat-label class="mt-6">{{ item.label }}</mat-label>
+                    <mat-form-field class="dob mt-6">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    }
+                </div>
+            </form>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,11 @@
+<div>
+    <img id="image" height="600" [src]="sanitizedUrl">
+    <div class="crop-actions">
+        <button mat-raised-button style="margin-right: 1rem" color="warn" (click)="reset()">
+            Reset
+        </button>
+        <button mat-flat-button color="primary" (click)="crop()">
+            Ok
+        </button>
+    </div>
+</div>

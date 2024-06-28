@@ -1,0 +1,155 @@
+mat-card {
+    width: 98%;
+    border-radius: 15px;
+    margin-left: 12px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.announcement-container {
+    border-radius: 15px;
+}
+
+.d-flex {
+    display: inline-flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.uh-oh-card-container {
+    background-color: hsla(293, 100%, 50%, 1);
+    background-image:
+        radial-gradient(at 40% 20%, hsla(137, 100%, 74%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(298, 100%, 56%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(104, 100%, 93%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(89, 100%, 76%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(131, 100%, 77%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 100%, hsla(351, 100%, 70%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(92, 100%, 76%, 1) 0px, transparent 50%);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    vertical-align: middle;
+
+    .uh-oh-message {
+        margin-left: 50px;
+        align-content: center;
+    }
+
+    .confused-image {
+        margin-right: 90px;
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+    }
+}
+
+.waiting-card-container {
+    background-color: hsla(62, 100%, 80%, 1);
+    background-image:
+        radial-gradient(at 46% 53%, hsla(86, 60%, 62%, 1) 0px, transparent 50%),
+        radial-gradient(at 55% 96%, hsla(28, 85%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 16% 19%, hsla(17, 96%, 79%, 1) 0px, transparent 50%),
+        radial-gradient(at 82% 35%, hsla(43, 65%, 73%, 1) 0px, transparent 50%),
+        radial-gradient(at 52% 38%, hsla(120, 66%, 78%, 1) 0px, transparent 50%),
+        radial-gradient(at 21% 67%, hsla(187, 94%, 73%, 1) 0px, transparent 50%),
+        radial-gradient(at 43% 92%, hsla(205, 65%, 76%, 1) 0px, transparent 50%);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    vertical-align: middle;
+
+    .waiting-message {
+        margin-left: 50px;
+        align-content: center;
+    }
+
+    .waiting-img {
+        margin-right: 90px;
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+    }
+}
+
+.result-announcement-container {
+    background-color: #99ffec;
+    background-image:
+        radial-gradient(at 5% 69%, hsla(113, 69%, 75%, 1) 0px, transparent 50%),
+        radial-gradient(at 79% 40%, hsla(196, 92%, 68%, 1) 0px, transparent 50%),
+        radial-gradient(at 5% 11%, hsla(73, 88%, 67%, 1) 0px, transparent 50%),
+        radial-gradient(at 10% 13%, hsla(236, 62%, 72%, 1) 0px, transparent 50%),
+        radial-gradient(at 98% 18%, hsla(129, 85%, 71%, 1) 0px, transparent 50%),
+        radial-gradient(at 25% 68%, hsla(214, 68%, 64%, 1) 0px, transparent 50%);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    vertical-align: middle;
+
+    .result-message {
+        margin-left: 50px;
+        align-content: center;
+    }
+
+    .result-img {
+        margin-right: 90px;
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+    }
+}
+
+.total-grade {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.total-label {
+    margin-right: 5px;
+}
+
+.german-scale-grade-container {
+    display: flex;
+    align-items: center;
+}
+
+.german-scale-grade-container mat-card {
+    width: 40px;
+    vertical-align: top;
+    align-items: center;
+    width: 60px;
+    border: #666666 1px solid;
+}
+
+.vietnamese-scale, .german.scale {
+    display: flex;
+    align-items: center;
+}
+
+.vietnamese-scale-grade-container mat-card {
+    vertical-align: top;
+    align-items: center;
+    border: #666666 1px solid;
+    width: 60px;
+}

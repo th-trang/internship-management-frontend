@@ -1,0 +1,27 @@
+<div class="h-[100vh] flex items-center bg-gray-200">
+  <div class="w-[800px] h-[400px] grid grid-cols-2 gap-4 m-auto px-4 rounded-lg">
+    <div class="relative h-full rounded-lg bg-primary">
+      <img class="absolute inset-0 m-auto" alt="" src="./assets/images/login-assets.png" />
+    </div>
+    <div class="flex flex-col gap-3">
+      <img class="w-1/2" alt="" src="./assets/images/logo.png" />
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-2">
+        <mat-form-field>
+          <input matInput type="text" formControlName="username" placeholder="Username" />
+          <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+            Username is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="password" formControlName="password" placeholder="Password" />
+          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

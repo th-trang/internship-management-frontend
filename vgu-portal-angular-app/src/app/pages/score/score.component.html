@@ -1,0 +1,56 @@
+<mat-drawer-container class="min-h-screen">
+    <mat-drawer-content>
+        <div class="p-4 mx-auto">
+            <h2 class="text-xl font-semibold py-2">Internship Score</h2>
+            <div class="border-b border-black h-[1px] mb-4"></div>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <!--- Note that these columns can be defined in any order.
+                          The actual rendered columns are set as a property on the row definition" -->
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>No.</th>
+                    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="major">
+                    <th mat-header-cell *matHeaderCellDef>Major</th>
+                    <td mat-cell *matCellDef="let element">{{ element.major }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="course">
+                    <th mat-header-cell *matHeaderCellDef>Course</th>
+                    <td mat-cell *matCellDef="let element">{{ element.course }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="student">
+                    <th mat-header-cell *matHeaderCellDef>Student</th>
+                    <td mat-cell *matCellDef="let element">{{ element.student }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="score">
+                    <th mat-header-cell *matHeaderCellDef>Score</th>
+                    <td mat-cell *matCellDef="let element">{{ element.score }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef>Status</th>
+                    <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="comment">
+                    <th mat-header-cell *matHeaderCellDef>Comment</th>
+                    <td mat-cell *matCellDef="let element">{{ element.comment }}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator
+                    [pageSizeOptions]="[10, 20, 50, 100]"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements"
+            >
+            </mat-paginator>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

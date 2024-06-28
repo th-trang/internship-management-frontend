@@ -1,0 +1,70 @@
+
+<mat-sidenav-container class="sidenav">
+    <mat-sidenav #sidenav mode="side" [fixedInViewport]="mobileQuery.matches">
+      <img class="logo-vgu-weiss" src="./assets/images/logo-vgu-weiss.png">
+      <h1 class="title">{{APP_NAME}}</h1>
+      <mat-nav-list>
+        @for (item of routes(); track item) {
+        <a mat-list-item (click)="navigateByRole(item.path)" [routerLinkActive]="['router-is-active']">
+          <span style="color: white;" class="route-block mt-1">
+            <span class="routes-icon mt-0.5">
+              <mat-icon>
+                <span class="material-symbols-outlined">{{ item.data.icon }}</span>
+              </mat-icon>
+            </span>
+            <span class="route-name mb-1">{{ item.data.name }}</span>
+          </span>
+        </a>
+        }
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar class="header" [class.header]="mobileQuery.matches">
+        <span class="menu-btn">
+          <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+            <mat-icon class="material-icons">menu</mat-icon>
+          </button>
+        </span>
+        <span class="role font-bold text-2xl uppercase">{{ role() }}</span>
+        <span class="example-spacer"></span>
+        <span class="notification-btn">
+          <button mat-icon-button class="notification-button">
+            <mat-icon matBadge="15" matBadgeColor="warn" [matBadgeHidden]="hidden" aria-hidden="false">
+              <span class="material-symbols">notifications</span>
+            </mat-icon>
+          </button>
+        </span>
+        <button mat-button [matMenuTriggerFor]="menu" class="user-profile-btn" (click)="toggleMenu()"
+          aria-expanded="true">
+          <span class="user-profile-details">
+            <span class="user-avatar">
+              <mat-icon>
+                <span class="material-symbols-outlined mt-0.5">account_circle</span> <!--replace this with user avatar-->
+              </mat-icon>
+            </span>
+            <span class="user-name mb-0.5 ml-2.5">{{ name() }}</span>
+            <span class="menu-arrow-icon">
+              <mat-icon>
+                <span class="material-symbols-outlined">{{ menuOpen ? 'expand_less' : 'expand_more' }}</span>
+              </mat-icon>
+            </span>
+          </span>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/profile']" class="user-profile-menu">
+              <mat-icon style="transform: scale(1.2);">
+                <span class="material-symbols-outlined">manage_accounts</span>
+              </mat-icon>
+              <span>Profile</span>
+            </button>
+            <button mat-menu-item (click)="onLogout()" class="user-logout">
+              <mat-icon style="transform: scale(1.1);">
+                <span class="material-symbols-outlined">logout</span>
+              </mat-icon>
+              <span>Log out</span>
+            </button>
+          </mat-menu>
+        </button>
+      </mat-toolbar>
+      <router-outlet class="flex flex-col"></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container> 

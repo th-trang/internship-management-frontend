@@ -1,0 +1,81 @@
+<!--remove these buttons before production
+these buttons are meant to prove the work flow for the cards-->
+<mat-toolbar class="toggle-btn">
+    <mat-slide-toggle (click)="onAttend()" color="primary" labelPosition="before">isAttended</mat-slide-toggle>
+    <span class="example-spaccer"></span>
+    <mat-slide-toggle (click)="onGradeStatus()" color="primary" labelPosition="before">graded</mat-slide-toggle>
+</mat-toolbar>
+
+<mat-card class="announcement">
+    <div class="announcement-container">
+        <ng-container *ngIf="isAttended && graded; else waitingCard"
+            class="d-flex align-items-center justify-content-between">
+            <div #resultInCard class="result-announcement-container d-flex align-items-center justify-content-between">
+                <span class="result-message">
+                    <p class="text-2xl uppercase" style="font-weight: bold;">HURRAY!</p>
+                    <p>Your result is in, check it out!</p>
+                </span>
+                <span class="example-spacer"></span>
+                <span class="result-img">
+                    <img src="../../../../assets/images/party.png">
+                </span>
+            </div>
+        </ng-container>
+
+        <ng-template #waitingCard>
+            <div class="waiting-card-container" *ngIf="isAttended; else uhOhCard">
+                <span class="waiting-message">
+                    <p class="text-2xl uppercase" style="font-weight: bold;">HANG ON THERE...</p>
+                    <p>We are doing the best we can to grade your performance</p>
+                    <p>We promise to deliver your result at our the latest convenience.</p>
+                </span>
+                <span class="example-spacer"></span>
+                <span class="waiting-img">
+                    <img src="../../../../assets/images/work-progress.png">
+                </span>
+            </div>
+        </ng-template>
+
+        <ng-template #uhOhCard>
+            <div class="uh-oh-card-container d-flex align-items-center justify-content-between">
+                <span class="uh-oh-message">
+                    <p class="text-2xl uppercase" style="font-weight: bold;">UH OH...</p>
+                    <p>Seems like you haven't join Seminar session.</p>
+                    <p>Come back at later time.</p>
+                </span>
+                <span class="example-spacer"></span>
+                <span class="confused-image">
+                    <img src="../../../../assets/images/confused.png" alt="">
+                </span>
+            </div>
+        </ng-template>
+    </div>
+</mat-card>
+
+@if (graded) {
+    <mat-card class="result-breakdown-card my-2.5 ">
+        <p class="font-semibold uppercase text-xl ms-8">grade breakdown</p>
+        <div class="criteria-container mt-6 ms-8">
+            <div *ngFor="let criteria of finalGrade" class="{{criteria.key}}">
+                <span class="label">{{criteria.label}}</span>
+                <span class="example-spacer"></span>
+                <span class="value ms-36">{{criteria.value}}</span>
+            </div>
+        </div>
+        <div class="total-grade my-6 ms-8 ">
+            <div class="german-scale flex-container">
+                <span class="total-label">Total</span>
+                <span class="title capitaize">(german scale)</span>
+                <span class="german-scale-grade-container ms-10">
+                    <mat-card class="german-scale-grade">1.0</mat-card>
+                </span>
+            </div>
+            <div class="vietnamese-scale mt-1">
+                <span class="title capitaize ms-10">(vietamese scale)</span>
+                <span class="vietnamese-scale-grade-container ms-6">
+                    <mat-card class="vietamese-scale-grade">1.0</mat-card>
+                </span>
+            </div>
+        </div>
+    </mat-card>
+}

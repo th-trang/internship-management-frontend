@@ -1,0 +1,152 @@
+<mat-dialog-content class="mat-typography">
+<form
+  [formGroup]="VForm"
+  class="relative p-4 flex flex-col gap-2"
+>
+  <h2 class="text-2xl font-semibol">
+    {{ !data?.form?.id ? 'Add New Internship' : data?.form?.name  }}
+  </h2>
+  <!-- Input fields for name, code, start_date and end_date -->
+  <div class="flex gap-3">
+    <mat-form-field class="flex-1">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name" required />
+      <mat-error *ngIf="VForm.controls['name'].hasError('required')">
+        name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="flex-1">
+      <mat-label>Code</mat-label>
+      <input matInput type="text" formControlName="code" required />
+      <mat-error *ngIf="VForm.controls['code'].hasError('required')">
+        code is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex gap-3">
+    <mat-form-field class="w-1/2">
+      <mat-label>Start Date:</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datepicker"
+        formControlName="start_date"
+        required
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="datepicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancel</button>
+          <button mat-raised-button color="primary" matDatepickerApply>
+            Apply
+          </button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-error *ngIf="VForm.controls['start_date'].hasError('required')">
+        Start Date is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-1/2">
+      <mat-label>End Date:</mat-label>
+      <input
+        matInput
+        [matDatepicker]="end_date"
+        formControlName="end_date"
+        required
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="end_date"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #end_date>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancel</button>
+          <button mat-raised-button color="primary" matDatepickerApply>
+            Apply
+          </button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-error *ngIf="VForm.controls['end_date'].hasError('required')">
+        End Date is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="w-full">
+      <mat-label>Major ID:</mat-label>
+      <mat-select formControlName="major_id">
+          <mat-option *ngFor="let dropdownItem of this.data?.majorList" [value]="dropdownItem.id">{{ dropdownItem?.name || dropdownItem.label }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="VForm.controls['major_id'].hasError('required')">
+        major is required
+      </mat-error>
+  </mat-form-field>
+  </div>
+  <div class="flex gap-3">
+    <mat-form-field class="flex-1">
+      <mat-label>Module ID:</mat-label>
+      <input matInput type="text" formControlName="module_id" required />
+      <mat-error *ngIf="VForm.controls['module_id'].hasError('required')">
+        Module ID is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="flex-1">
+      <mat-label>Module Name:</mat-label>
+      <input matInput type="text" formControlName="module_name" required />
+      <mat-error *ngIf="VForm.controls['module_name'].hasError('required')">
+        Module Name is required
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <button
+    *ngIf="!data?.form?.id"
+    mat-raised-button
+    color="primary"
+    class="w-fit"
+    (click)="addAssignment()"
+    type="button"
+  >
+    <mat-icon fontIcon="add" />
+    Add Assignment
+  </button>
+  <div>Assignments</div>
+  <div
+    formArrayName="assignments"
+    *ngFor="let assignment of assignmentsForm.controls; let i = index"
+  >
+    <ng-container [formGroupName]="i">
+      <div class="flex justify-start items-start gap-3">
+        <mat-form-field class="w-1/2">
+          <mat-label>Name:</mat-label>
+          <input matInput type="text" formControlName="name" required />
+        </mat-form-field>
+        <button
+          *ngIf="!data?.form?.id"
+          [disabled]="assignmentsForm.controls.length === 1"
+          mat-raised-button
+          color="warn"
+          (click)="removeAssignment(i)"
+          type="button"
+        >
+          <mat-icon fontIcon="remove" />
+          Remove
+        </button>
+      </div>
+    </ng-container>
+  </div>
+  <!-- Submit button -->
+  <div class="fixed w-full right-0 bottom-0"> 
+</div>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions  *ngIf="!data?.form?.id" align="center">
+  <button [disabled]="VForm.invalid" *ngIf="!data?.form?.id" color="primary" mat-flat-button cdkFocusInitial (click)="createForm()">Create</button>
+  <button [disabled]="VForm.invalid" *ngIf="data?.form?.id" color="primary" mat-flat-button cdkFocusInitial (click)="updateForm()">Save</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

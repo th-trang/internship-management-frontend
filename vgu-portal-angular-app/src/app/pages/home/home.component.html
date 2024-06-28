@@ -1,0 +1,67 @@
+<mat-drawer-container class="min-h-screen">
+  <mat-drawer-content>
+    <div class="p-4 mx-auto">
+      <div class="flex justify-between">
+        <h2 class="text-xl font-semibold py-2">Internship management</h2>
+        <button mat-fab extended color="primary" class="mb-0 p-2" (click)="openCreateClassDialog()">
+          <mat-icon>add</mat-icon> Add
+        </button>
+      </div>
+<!--      <div class="border-b border-black h-[1px] mb-4"></div>-->
+      <div class="flex space-x-4 items-center filter-block">
+        <input matInput type="text" [(ngModel)]="major" placeholder="Major">
+        <input matInput [(ngModel)]="company" placeholder="Company">
+        <button mat-icon-button color="primary" class="mb-4" (click)="getClasses()">
+          <mat-icon class="h-20">search</mat-icon>
+        </button>
+      </div>
+      <table mat-table [dataSource]="classList" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef>Major</th>
+          <td mat-cell *matCellDef="let element">{{ element.code }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Course</th>
+          <td mat-cell *matCellDef="let element" (click)="goToDetailClass(element.id)" class="text-blue-500 cursor-pointer hover:underline">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="start_date">
+          <th mat-header-cell *matHeaderCellDef>Start Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.start_date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="end_date">
+          <th mat-header-cell *matHeaderCellDef>End Date</th>
+          <td mat-cell *matCellDef="let element">{{ moment(element.end_date).format('DD/MM/YYYY HH:mm') }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [length]="total()"
+        [pageIndex]="page()"
+        [pageSize]="pageSize()"
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        (page)="handleChangePage($event)"
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

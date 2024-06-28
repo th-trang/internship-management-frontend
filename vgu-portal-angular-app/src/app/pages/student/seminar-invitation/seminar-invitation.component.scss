@@ -1,0 +1,166 @@
+mat-card {
+    width: 98%;
+    border-radius: 15px;
+    margin-left: 12px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.announcement-container {
+    border-radius: 15px;
+}
+
+.d-flex {
+    display: inline-flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.congrat-card-container {
+    display: flex;
+    vertical-align: middle;
+    background-color: #ffc999;
+    background-image:
+        radial-gradient(at 84% 90%, hsla(97, 75%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 15% 75%, hsla(190, 90%, 72%, 1) 0px, transparent 50%),
+        radial-gradient(at 15% 93%, hsla(160, 78%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 91% 27%, hsla(31, 93%, 65%, 1) 0px, transparent 50%),
+        radial-gradient(at 26% 63%, hsla(135, 98%, 79%, 1) 0px, transparent 50%),
+        radial-gradient(at 58% 9%, hsla(267, 98%, 61%, 1) 0px, transparent 50%),
+        radial-gradient(at 32% 24%, hsla(291, 89%, 60%, 1) 0px, transparent 50%),
+        radial-gradient(at 31% 79%, hsla(343, 99%, 65%, 1) 0px, transparent 50%);
+    border-radius: 15px;
+    padding: 20px;
+
+    .congrat-text {
+        margin-left: 80px;
+        align-content: center;
+    }
+
+    .confetti-img {
+        margin-right: 90px;
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+    }
+}
+
+.date-announcement-container {
+    display: flex;
+    vertical-align: middle;
+    background-color: #ff99b1;
+    background-image:
+        radial-gradient(at 7% 95%, hsla(250, 93%, 69%, 1) 0px, transparent 50%),
+        radial-gradient(at 46% 19%, hsla(101, 83%, 64%, 1) 0px, transparent 50%),
+        radial-gradient(at 34% 17%, hsla(294, 68%, 77%, 1) 0px, transparent 50%),
+        radial-gradient(at 95% 34%, hsla(46, 62%, 70%, 1) 0px, transparent 50%),
+        radial-gradient(at 35% 51%, hsla(358, 94%, 72%, 1) 0px, transparent 50%),
+        radial-gradient(at 18% 23%, hsla(51, 72%, 71%, 1) 0px, transparent 50%),
+        radial-gradient(at 37% 88%, hsla(255, 91%, 68%, 1) 0px, transparent 50%);
+    border-radius: 15px;
+    padding: 20px;
+
+    .date-announcement-text {
+        margin-left: 80px;
+        align-content: center;
+
+        a {
+            text-decoration: underline !important;
+            font-weight: bold;
+        }
+    }
+
+    .seminar-img {
+        margin-right: 90px;
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+    }
+}
+
+.sorry-card-container {
+    display: flex;
+    vertical-align: middle;
+    background-color: hsla(0, 100%, 50%, 1);
+    background-image:
+        radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px, transparent 50%),
+        radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 1) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
+    border-radius: 15px;
+    padding: 20px;
+
+    .sorry-text {
+        margin-left: 80px;
+        align-content: center;
+    }
+
+    .sad-face-img {
+        margin-right: 90px;
+
+        img {
+            width: 200px;
+            height: auto;
+        }
+    }
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.seminar-invitation-container {
+    vertical-align: middle;
+    margin-top: 20px;
+    margin-left: 80px;
+
+    .location-container,
+    .seminar-date-container,
+    .time-slot-container,
+    .examiners-container {
+        display: inline-flexbox;
+        align-items: middle;
+        margin-left: 20px;
+    }
+
+    .location-details,
+    .meeting-room-number {
+        color: #E2231A;
+        font-weight: bold;
+    }
+
+    .date,
+    .time-slot,
+    .examiners {
+        vertical-align: top;
+    }
+}
+
+mat-icon {
+    transform: scale(1.5);
+    color: #39a7ff;
+}
+
+button {
+    margin-left: 85%;
+    width: 10%;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.check-icon mat-icon{
+    margin-left: 90%;
+}

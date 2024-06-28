@@ -1,0 +1,91 @@
+<!--remove these buttons before production
+these buttons are meant to prove the work flow for the cards-->
+<mat-toolbar class="toggle-btn">
+    <mat-slide-toggle (click)="onStepsCompleted()" color="primary"
+        labelPosition="before">allStepsApproved</mat-slide-toggle>
+    <span class="example-spaccer"></span>
+    <mat-slide-toggle (click)="isSettled()" color="primary" labelPosition="before">isDateSettled</mat-slide-toggle>
+</mat-toolbar>
+
+<mat-card class="announcement mt-3 mb-3">
+    <div class="announcement-container">
+        <ng-container *ngIf="allStepsApproved && isDateSettled; else congratCard"
+            class="d-flex align-items-center justify-content-between">
+            <div #dateAnnouncement
+                class="date-announcement-container d-flex align-items-center justify-content-between">
+                <span class="date-announcement-text">
+                    <p class="text-2xl uppercase" style="font-weight: bold;">WOO HOO!</p>
+                    <p>We have got a date for your seminar</p>
+                    <p>Check out the invitation card below!</p>
+                    <p>Don't forget to head out to
+                        <a [routerLink]="['/student/information']">Seminar tab in Information page</a>
+                        for better preparation for your big day.
+                    </p>
+                </span>
+                <span class="seminar-img">
+                    <img src="../../../../assets/images/result-in.png" alt="">
+                </span>
+            </div>
+        </ng-container>
+
+        <ng-template #congratCard>
+            <div *ngIf="allStepsApproved; else sorryCard" class="congrat-card-container">
+                <span class="congrat-text">
+                    <p class="text-2xl uppercase" style="font-weight: bold;">CONGRATULATIONS!</p>
+                    <p>You are approaching the last stage!</p>
+                    <p>We will let you know when the seminar takes place soon.</p>
+                </span>
+                <span class="example-spacer"></span>
+                <span class="confetti-img">
+                    <img src="../../../../assets/images/confetti_2.png">
+                </span>
+            </div>
+        </ng-template>
+
+        <ng-template #sorryCard>
+            <div class="sorry-card-container d-flex align-items-center justify-content-between">
+                <span class="sorry-text">
+                    <p class="text-2xl uppercase" style="font-weight: bold;">SORRY!</p>
+                    <p>You are not yet qualified for the Internship phase</p>
+                    <p>Please come back later!</p>
+                </span>
+                <span class="sad-face-img">
+                    <img src="../../../../assets/images/sad-face.png" alt="">
+                </span>
+            </div>
+        </ng-template>
+    </div>
+</mat-card>
+
+<mat-card *ngIf="allStepsApproved && isDateSettled" class="seminar-invitation mt-3 mb-3">
+    <div class="seminar-invitation-container">
+        <div class="location-container mb-4">
+            <span class="location-details text-2xl uppercase bold">{{ location() }} building - </span>
+            <span class="meeting-room-number text-2xl uppercase bold"> room {{ room() }} </span>
+        </div>
+        <div class="seminar-date-container mb-3">
+            <mat-icon aria-hidden="true" fontIcon="today"></mat-icon>
+            &nbsp;&nbsp;
+            <span class="date text-base">{{ date() | date: "EEEE, dd MMMM yyyy"}} </span>
+        </div>
+        <div class="time-slot-container mb-3">
+            <mat-icon aria-hidden="true" fontIcon="schedule"></mat-icon>
+            &nbsp;&nbsp;
+            <span class="time-slot text-base">{{ start_date() | timeConvert }} - {{ end_date() | timeConvert }}</span>
+        </div>
+        <div class="examiners-container">
+            <mat-icon aria-hidden="true" fontIcon="group"></mat-icon>
+            &nbsp;&nbsp;
+            <span class="examiners text-base">{{ examiner1 () }} </span>
+        </div>
+    </div>
+    <div *ngIf="isAttended; else attended" class="attend-btn mb-3">
+        <button mat-raised-button class="attent-button" (click)="onAttend()" color="primary"
+            style="color: white">Attend</button>
+    </div>
+    <ng-template #attended>
+        <div class="check-icon mb-3">
+            <mat-icon aria-hidden="true" fontIcon="check"></mat-icon>
+        </div>
+    </ng-template>
+</mat-card>

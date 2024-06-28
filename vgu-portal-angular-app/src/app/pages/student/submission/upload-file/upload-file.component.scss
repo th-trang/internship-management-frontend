@@ -1,0 +1,33 @@
+.text-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.centered {
+    margin-left: 15%;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+}
+
+.drop-zone {
+    height: 60px;
+    display: table;
+    width: 45%;
+    background-color: #b0deff;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.text-link {
+    color: white;
+}
+
+.material-icons-outlined {
+    color: white;
+    font-size: 30px;
+    height: 30px;
+    width: 40px;
+}

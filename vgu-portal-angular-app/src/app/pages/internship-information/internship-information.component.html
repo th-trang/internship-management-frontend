@@ -1,0 +1,22 @@
+<mat-card class="p-4">
+    <mat-card-header>
+        <div class="w-full flex">
+            <div class="w-full flex gap-4 mt-auto h-fit">
+                <p class="flex-1 text-xl py-2 border-b-2 border-b-gray-500 border-b-1 border-b-solid">Nguyen Van A</p>
+            </div>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="profileForm" class="py-6">
+            <div *ngFor="let item of displayedFields" class="grid grid-cols-[200px,1fr]">
+                <mat-label>{{ item.label }}</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput [type]="item.type" [formControlName]="item.key">
+                    <mat-error *ngIf="profileForm.controls[item.key].hasError('required')">
+                        {{ item.label }} is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

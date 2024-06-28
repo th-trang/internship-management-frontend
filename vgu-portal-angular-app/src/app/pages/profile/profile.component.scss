@@ -1,0 +1,40 @@
+mat-card {
+    width: 98%;
+    margin-left: 12px;
+    border-radius: 15px;
+}
+
+.toolbar-btn-right {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.edit-btn, .save-btn, .edit-off-btn, .return-btn {
+    background-color: transparent;
+    border: none;
+    color: #39a7ff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+    
+  .profile-toolbar-container {
+    flex: 0.3;
+  }
+
+  .profile-information-container {
+    flex: 0.7;
+  }
+
+  mat-divider {
+    background-color: #666666, 75%;
+    margin-right: 80px;
+  }
+}
+
+
+

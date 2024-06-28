@@ -1,0 +1,52 @@
+
+<h1 class="p-4 text-xl text-primary">{{ !data.id ? 'Add New Internship' : data.name }}</h1>
+<mat-dialog-content class="mat-typography">
+<form [formGroup]="newClassForm" class="w-full space-y-4">
+    <div *ngFor="let item of textFields">
+        <div>
+            <mat-form-field class="w-full">
+                <mat-label>{{ item.label }}</mat-label>
+                <input matInput [type]="item.type || 'text'" [formControlName]="item.key" [required]="item.required">
+                <mat-error *ngIf="newClassForm.controls[item.key].hasError('required')">
+                    {{ item.label }} is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+        <div *ngFor="let item of dateFields, index as i">
+            <mat-form-field class="w-full">
+                <mat-label>{{ item.label }}</mat-label>
+                <input matInput [matDatepicker]="datepicker" [formControlName]="item.key" [required]="item.required">
+                <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                    <mat-datepicker-actions>
+                        <button mat-button matDatepickerCancel>Cancel</button>
+                        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                    </mat-datepicker-actions>
+                </mat-datepicker>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-error *ngIf="newClassForm.controls[item.key].hasError('required')">
+                    {{ item.label }} is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div *ngFor="let item of selectFields">
+        <mat-form-field *ngIf="item.type === 'select'" class="w-full">
+            <mat-label>{{ item.label }}</mat-label>
+            <mat-select [formControlName]="item.key">
+                <mat-option *ngFor="let dropdownItem of item.dropdown" [value]="dropdownItem.id">{{ dropdownItem?.name || dropdownItem.label }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="newClassForm.controls[item.key].hasError('required')">
+                {{ item.label }} is required
+            </mat-error>
+        </mat-form-field>
+    </div>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button *ngIf="!data.id" color="primary" mat-flat-button cdkFocusInitial (click)="createClass()">Create and send notice</button>
+    <button *ngIf="data.id" color="primary" mat-flat-button cdkFocusInitial (click)="editClass()">Save</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

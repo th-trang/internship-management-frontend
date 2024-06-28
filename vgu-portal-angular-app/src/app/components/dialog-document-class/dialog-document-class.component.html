@@ -1,0 +1,28 @@
+
+<h1 class="p-4 text-xl text-primary">Documents of {{ class() }} </h1>
+<mat-dialog-content class="mat-typography">
+    <div class="flex flex-col space-y-4 justify-center items-center w-[220px]">
+        <mat-icon class="!w-40 !h-40 !text-[160px]">description</mat-icon>
+        <div>filename.pdf</div>
+        <div class="flex items-center space-x-2 w-full">
+            <button mat-icon-button (click)="enableDocument()">
+                <mat-icon class="cursor-pointer">{{ newClassForm.value.enable ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+            <button mat-icon-button [disabled]="downloading()" (click)="downloadDocument()">
+                <mat-icon class="cursor-pointer">download</mat-icon>
+            </button>
+            <div class="w-full">
+                <mat-select class="border-2 p-1" [value]="newClassForm.value.status" placeholder="Status">
+                    <mat-option [value]="true">Pass</mat-option>
+                    <mat-option [value]="false">Failed</mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+    <mat-progress-bar class="mt-2" *ngIf="downloading()" mode="indeterminate"></mat-progress-bar>
+    <div *ngIf="!downloading()" class="h-3"></div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button color="primary" mat-flat-button cdkFocusInitial (click)="save()">Verify and send notice</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

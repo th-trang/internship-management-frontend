@@ -1,0 +1,79 @@
+<mat-card class="contentflex flex-col gap-5 mt-3">
+    <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup" [completed]="isStepOneApproved">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Submit your Transcript of Records</ng-template>
+                <mat-card class="transcript-doc flex flex-col gap-10 mt-3 mb-3">
+                    <mat-card-content class="transcript-doc-content">
+                        <h3 class="transcript-doc-title text-lg font-bold" style="color: #39a7ff">Transcript of Records
+                        </h3>
+                        <p class="text-xs">Note: Please wait for a confirmation in 5-7 days</p>
+                        <span class="text-xs">File
+                            naming convention:
+                            Transcript_ID_Fullname.file_name</span>
+                        <app-upload-file></app-upload-file>
+                        <div class="submit-btn flex gap-5">
+                            <button mat-raised-button class="submit-btn" type="submit" color="primary"
+                                aria-label="submit" (click)="onSubmit()">Submit</button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" [optional]="isStepTwoApproved">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Submit your draft job description</ng-template>
+                <mat-card class="draftJD-doc flex flex-col gap-10 mt-3 mb-3">
+                    <mat-card-content class="draftJD-doc-content">
+                        <h3 class="draftJD-doc-title text-lg font-bold" style="color: #39a7ff">Draft Job Decription</h3>
+                        <p class="text-xs">Note: Please wait for a confirmation in 5-7 days</p>
+                        <span class="text-xs">File naming convention:DraftJD_ID_Fullname.file_name</span>
+                            <app-upload-file></app-upload-file>
+                        <div class="submit-btn flex gap-5">
+                            <button mat-raised-button class="submit-btn" type="submit" color="primary"
+                                aria-label="submit" (click)="onSubmit()">Submit</button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" [optional]="isStepThreeApproved">
+            <form [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>Submit your Internship Confirmation</ng-template>
+                <mat-card class="draftJD-doc flex flex-col gap-10 mt-3 mb-3">
+                    <mat-card-content class="draftJD-doc-content">
+                        <h3 class="draftJD-doc-title text-lg font-bold" style="color: #39a7ff">Internship Confirmation
+                        </h3>
+                        <p class="text-xs">Note: Please wait for a confirmation in 5-7 days</p>
+                       <span class="text-xs">File naming convention: InternshipConfirmation_ID_Fullname.file_name</span>
+                            <app-upload-file></app-upload-file>
+                        <div class="submit-btn flex gap-5">
+                            <button mat-raised-button class="submit-btn" type="submit" color="primary"
+                                aria-label="submit" (click)="onSubmit()">Submit</button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="forthFormGroup" [optional]="isStepFourApproved">
+            <form [formGroup]="forthFormGroup">
+                <ng-template matStepLabel>Submit your Internship Report & Evaluation</ng-template>
+                <mat-card class="report-evaluation-doc flex flex-col gap-10 mt-3 mb-3">
+                    <mat-card-content class="report-evaluation-doc-content">
+                        <p class="text-xs">Note: Please wait for a confirmation in 5-7 days</p>
+                        <h3 class="report-doc-title text-lg font-bold" style="color: #39a7ff">Internship Report</h3>
+                        <p class="text-xs">File naming convention: InternshipReport_ID_Fullname.file_name</p>
+                                <app-upload-file></app-upload-file>
+                        <h3 class="evaluation-doc-title text-lg font-bold" style="color: #39a7ff">Evaluation Form</h3>
+                        <p class="text-xs">File naming convention: EvaluationForm_ID_Fullname.file_name</p>
+                                <app-upload-file></app-upload-file>
+                        <div class="submit-btn flex gap-5">
+                            <button mat-raised-button class="submit-btn" type="submit" color="primary"
+                                aria-label="submit" (click)="onSubmit()">Submit</button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </form>
+        </mat-step>
+    </mat-stepper>
+</mat-card>

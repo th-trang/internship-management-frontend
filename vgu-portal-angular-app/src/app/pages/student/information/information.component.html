@@ -1,0 +1,31 @@
+<mat-card class="student-information flex flex-col gap-10 mt-5">
+    <mat-card-content class="grid-template-columns">
+        <div class="first-column">
+                <div *ngFor="let field of values | slice: 0 : 3">
+                    <label class="font-bold text-base uppercase label-gap" style="color: #39a7ff">{{ field.label }}</label>
+                    <span class="content-evenly">{{ field.value }}</span>
+                </div>
+        </div> 
+        <span class="example-spacer"></span>
+        <div class="second-column">
+            <div *ngFor="let field of values | slice: 3">
+                <label class="font-bold text-base uppercase label-gap" style="color: #39a7ff">{{ field.label }}</label>
+                <span class="content-evenly">
+                    {{ field.value }}
+                @if (field.value === 'On board') {
+                    <!--progress bar defines step completion during the entire phase -->
+                    <mat-progress-bar mode="determinate" value="16.67"></mat-progress-bar> 
+                }
+                </span>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+<!-- <mat-card class="general-information flex flex-col gap-2 mb-5"> -->
+    <mat-tab-group class="tabs flex flex-col gap-2 mt-5 mb-2" #tabGroup (selectedTabChange)="tabChange($event)" backgroundColor="{{background}}">
+        <mat-tab *ngFor="let tab of tabs" label="{{tab.label}}" class="tab-label">
+            <div [innerHTML]="tab.value"></div>
+        </mat-tab>
+    </mat-tab-group>
+<!-- </mat-card> -->

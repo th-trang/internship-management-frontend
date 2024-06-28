@@ -1,0 +1,54 @@
+mat-card {
+    width: 98%;
+    margin-left: 12px;
+    border-radius: 15px;
+
+    mat-card-content {
+        display: flex;
+        flex-direction: row;
+        grid-template-columns: auto auto;
+        gap: 50px
+    }
+
+    .first-column,
+    .second-column {
+        display: grid;
+        gap: 7px;
+    }
+
+    .label-gap {
+        margin-right: 8px;
+    }
+
+    .content-evenly {
+        display: inline-block;
+        margin-left: 8px;
+    }
+
+    .examples-spacer {
+        flex: 1 1 auto;
+    }
+
+    label,
+    span {
+        white-space: nowrap;
+    }
+}
+
+// @media (max-width: 768px) {
+//     mat-card-content {
+//         display: flex;
+//         gap: 10px;
+//     }
+// }
+
+mat-tab-group {
+    width: 98%;
+    margin-left: 12px;
+    background-color: white;
+    border-radius: 15px;
+
+    .tab-label mat-tab-group mat-tab {
+        text-transform: capitalize;
+    }
+}

@@ -1,0 +1,107 @@
+mat-sidenav-container {
+    height: 100%;
+  
+    mat-sidenav {
+      width: 280px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #39a7ff;
+    }
+  
+    .logo-vgu-weiss {
+      width: 230px;
+      height: auto;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+  
+    .title {
+      margin-top: 30px;
+      font-size: 20pt;
+      font-style: bold;
+      font-weight: 700;
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+  
+  mat-nav-list {
+    margin-top: 15px;
+    width: 90%;
+    margin-left: 13px;
+  }
+  
+  .route-block {
+    display: flex;
+    vertical-align: middle;
+    justify-items: stretch;
+    align-items: center;
+    padding: auto;
+    margin-left: 40px;
+    transform: scale(1.1);
+  }
+  
+  a {
+    border-radius: 20px;
+    margin-bottom: 7px;
+  }
+  
+  a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+  }
+  
+  .route-block mat-icon {
+    transform: scale(1.35);
+  }
+  
+  .route-name {
+    margin-left: 15px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  mat-toolbar {
+    background-color: white;
+    vertical-align: middle;
+    height: 70px;
+  }
+  
+  .notification-btn button {
+    background-color: transparent;
+    border: none;
+    color: #39a7ff;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 15px;
+    transform: scale(1.15);
+  }
+  
+  .menu-btn button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .user-profile-details {
+    display: flex;
+    vertical-align: middle;
+    justify-items: stretch;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    transform: scale(1.15);
+  
+    .menu-arrow-icon mat-icon {
+      margin-left: 5px;
+      vertical-align: bottom;
+    }
+  }
+  
+  .user-avatar mat-icon{
+    transform: scale(1.3);
+  }
