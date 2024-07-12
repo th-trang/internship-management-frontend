@@ -1,12 +1,2 @@
-<ng-container *ngIf=!isSignInPage>
-  @if( role() === 'student' ) {
-    <app-student></app-student>
-    }
-  @else if ( role() === 'admin' ) {
-    <app-admin></app-admin>
-  }
-  @else {
-    <app-lecturer></app-lecturer>
-  }
-</ng-container>
-<router-outlet *ngIf="isSignInPage"></router-outlet>
+<router-outlet></router-outlet>
+

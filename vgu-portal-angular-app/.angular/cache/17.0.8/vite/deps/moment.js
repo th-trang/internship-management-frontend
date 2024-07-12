@@ -1,6 +1,6 @@
 import {
   require_moment
-} from "./chunk-3DMJA7DI.js";
+} from "./chunk-OOQXURY4.js";
 import "./chunk-FWOMF3V2.js";
 export default require_moment();
 //# sourceMappingURL=moment.js.map

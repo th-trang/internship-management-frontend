@@ -39,10 +39,11 @@ import { StudentService } from '../../services/student.service';
   templateUrl: './student.component.html',
   styleUrl: './student.component.scss'
 })
-export class StudentComponent implements OnInit, OnDestroy{
+export class StudentComponent implements OnInit, OnDestroy {
+
   public APP_NAME = APP_NAME;
   store = inject(StorageService);
-  user: any = signal({ role_id: '', role_name:''});
+  user: any = signal({ role_id: '', role_name: '' });
   routes: any = signal(null);
   role: any = signal('')
   hidden: boolean = false;
@@ -60,7 +61,7 @@ export class StudentComponent implements OnInit, OnDestroy{
     media: MediaMatcher,
     private data: StudentService
   ) {
-    effect(() => {}, this.user);
+    effect(() => { }, this.user);
     this.mobileQuery = media.matchMedia("(max-width: 250px)");
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -83,19 +84,19 @@ export class StudentComponent implements OnInit, OnDestroy{
     this.router.navigate([`/${roleName}/${childRoute}`]);
   }
 
-    //function which returns the number of notifications to be displayed
-    toggleBadgeVisibility() {
-      this.hidden = !this.hidden;
-    }
+  //function which returns the number of notifications to be displayed
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
 
-    toggleMenu() {
-      this.menuOpen = !this.menuOpen;
-    }
-  
-    public onLogout = () => {
-      this.user = null;
-      this.authRepository.logout();
-      this.router.navigate(["/sign-in"]);
-    }
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  public onLogout = () => {
+    this.user = null;
+    this.authRepository.logout();
+    this.router.navigate(["/sign-in"]);
+  }
 
 }

@@ -19,6 +19,7 @@ import { SubmissionComponent } from "./pages/student/submission/submission.compo
 import { SeminarInvitationComponent } from "./pages/student/seminar-invitation/seminar-invitation.component";
 import { IntershipResultComponent } from "./pages/student/intership-result/intership-result.component";
 
+
 export const routes: Routes = [
   {
     path: "",
@@ -124,6 +125,7 @@ export const routes: Routes = [
   {
     path: "teacher",
     component: LecturerComponent,
+    canActivate: [authenticationGuard],
     data: {
         role: "teacher",
       },
