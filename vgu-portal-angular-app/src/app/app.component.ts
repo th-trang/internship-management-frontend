@@ -1,7 +1,6 @@
-import { Component, OnInit, signal } from "@angular/core";
+import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
-import { APP_NAME } from "./constants";
+import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 import { StudentComponent } from "./pages/student/student.component";
 import { AdminComponent } from "./pages/admin/admin.component";
 import { LecturerComponent } from "./pages/lecturer/lecturer.component";
