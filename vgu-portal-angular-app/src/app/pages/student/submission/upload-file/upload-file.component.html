@@ -20,7 +20,7 @@
   </mat-progress-bar>
 }
 @if (isInProgress$ |async) {
-  <button mat-raised-button color="warn">Cancel</button>
+  <button mat-raised-button color="warn" (click)="cancelUpload()">Cancel</button>
 }
 @if (completed$ | async) {
   <h5>File has been uploaded successfully</h5>

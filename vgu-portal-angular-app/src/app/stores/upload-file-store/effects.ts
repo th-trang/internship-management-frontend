@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 import { catchError, concatMap, map, takeUntil } from 'rxjs/operators';
 import {serializeError} from 'serialize-error';
 import * as fromFileUploadActions from './actions';
-import { FileUploadService } from '../../services/file-upload.service';
+import { UploadFileService } from '../../services/file-upload.service';
 
 @Injectable()
 export class UploadFileEffects {
@@ -27,7 +27,7 @@ export class UploadFileEffects {
   )
 
   constructor(
-    private fileUploadService: FileUploadService,
+    private fileUploadService: UploadFileService,
     private actions$: Actions<fromFileUploadActions.Actions>
   ) { }
 

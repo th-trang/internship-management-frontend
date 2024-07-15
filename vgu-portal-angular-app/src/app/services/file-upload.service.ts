@@ -1,12 +1,12 @@
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FileUploadService {
+export class UploadFileService {
 
   private API_URL = environment.API_URL;
 
@@ -14,15 +14,14 @@ export class FileUploadService {
     private httpClient: HttpClient,
   ) { }
 
-  public uploadFile(file: File): Observable<HttpEvent<any>> {
+  public uploadFile(file: File): Observable<HttpEvent<{}>> {
     const formData: FormData = new FormData();
-    formData.append('file', file, file.name);
+    formData.append('files', file, file.name);
 
-    const option = {
+    const req = new HttpRequest('POST', `${this.API_URL}/internship/v1/report`, formData, {
       reportProgress: true,
-    };
+    });
 
-    const req = new HttpRequest('POST', `{this.API_URL}/report`, formData, option)
     return this.httpClient.request(req);
-    }
+  }
 }

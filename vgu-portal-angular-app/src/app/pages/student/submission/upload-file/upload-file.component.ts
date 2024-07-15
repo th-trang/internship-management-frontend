@@ -32,6 +32,7 @@ export class UploadFileComponent implements OnInit {
   isInProgress$: Observable<boolean>;
   isReady$: Observable<boolean>;
   hasFailed$: Observable<boolean>;
+  file: File;
 
   constructor(private store$: Store<fromFileUploadState.State>) {}
 
@@ -75,9 +76,9 @@ export class UploadFileComponent implements OnInit {
     event.srcElement.value = null;
   }
 
-  resetUpload() {
-    this.store$.dispatch(new fromFileUploadActions.UploadResetAction());
-  }
+  // resetUpload() {
+  //   this.store$.dispatch(new fromFileUploadActions.UploadResetAction());
+  // }
 
   cancelUpload() {
     this.store$.dispatch(new fromFileUploadActions.UploadCancelAction());
