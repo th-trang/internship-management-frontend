@@ -62,6 +62,14 @@ export class UploadFileComponent implements OnInit {
     );
   }
 
+  onChange(event: any) {
+    const file: File = event.target.files[0];
+    
+    if(file) {
+      this.file = file;
+    }
+  }
+
   uploadFile(event: any) {
     const files: FileList = event.target.files;
     const file = files.item(0);
@@ -76,9 +84,9 @@ export class UploadFileComponent implements OnInit {
     event.srcElement.value = null;
   }
 
-  // resetUpload() {
-  //   this.store$.dispatch(new fromFileUploadActions.UploadResetAction());
-  // }
+  resetUpload() {
+    this.store$.dispatch(new fromFileUploadActions.UploadResetAction());
+  }
 
   cancelUpload() {
     this.store$.dispatch(new fromFileUploadActions.UploadCancelAction());

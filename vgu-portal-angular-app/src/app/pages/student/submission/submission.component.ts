@@ -65,7 +65,4 @@ export class SubmissionComponent implements OnInit {
 
   });
 
-  onSubmit() {
-
-  }
 }

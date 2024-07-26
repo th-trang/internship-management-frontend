@@ -27,6 +27,11 @@ mat-sidenav-container {
     }
   }
   
+  .selected-background {
+    background-color: rgba(255, 255, 255, 0.2);
+    transparancy: 0.5;
+  }
+
   mat-nav-list {
     margin-top: 15px;
     width: 90%;
@@ -49,7 +54,7 @@ mat-sidenav-container {
   }
   
   a:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
     cursor: pointer;
   }
   

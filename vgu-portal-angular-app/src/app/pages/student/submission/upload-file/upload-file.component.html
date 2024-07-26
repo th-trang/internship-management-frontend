@@ -1,45 +1,67 @@
 <div style="padding-top: 10px;">
-  <div class="drop-zone">
-    @if ((isReady$ | async) || (hasFailed$ | async)) {
-      <div class="text-wrapper">
-        <div class="centered">
-          <mat-icon class="material-icons-outlined">cloud_upload</mat-icon>
-          <input type="file" name="file" id="file" (change)="uploadFile($event)" />
-          <label for="file" class="text-sm">
-            <span class="text-link text-sm">Click here to upload</span>
-            or drag and drop
-          </label>
-        </div>
+  @if (isReady$ | async) {
+  <div class="drop-zone" #uploadReady>
+    <div class="text-wrapper">
+      <div class="centered">
+        <input type="file" name="file" id="file" (change)="onChange($event)" />
+        <label for="file" class="text-sm align-middle">
+          <mat-icon>
+            <span class="material-symbols-outlined">cloud_upload</span>
+          </mat-icon>
+          &nbsp;&nbsp;
+          <span class="text-link text-sm">Click here to upload</span>
+          or drag and drop
+        </label>
       </div>
-    }
-  </div>
-</div>
-@if (isInProgress$ | async) {
-  <mat-progress-bar mode="determinate" class="mt-10">
-    Uploading... {{progress$ | async}}%
-  </mat-progress-bar>
-}
-@if (isInProgress$ |async) {
-  <button mat-raised-button color="warn" (click)="cancelUpload()">Cancel</button>
-}
-@if (completed$ | async) {
-  <h5>File has been uploaded successfully</h5>
-}
-@if (hasFailed$ | async) {
-  <p>Error: {{error$ | async}}</p>
-}
-<!-- <div class="file-info">
-  <mat-icon class="material-icons-outlined">description</mat-icon>
-  <div *ngIf="percentage | async as pct">
-    <progress [value]="pct" max="100"></progress>
-    {{ pct | number }}%
-</div>
-
-<div *ngIf="(snapshot | async) as snap">
-    <div>
-        {{ snap.bytesTransferred / 1024 | number:'1.0-1' }} of {{ snap.totalBytes / 1024 | number:'1.0-1' }} KB, {{ file.name }}
     </div>
-    <button mat-raised-button (click)="task.pause()" [disabled]="!isActive(snap)" [hidden]="!isActive(snap)">Pause</button>
-    <button mat-raised-button (click)="task.cancel()" [disabled]="!isActive(snap)" [hidden]="!isActive(snap)">Cancel</button>
-    <button mat-raised-button (click)="task.resume()" [disabled]="!(snap?.state === 'paused')" [hidden]="!isActive(snap)">Resume</button>
-</div> -->
+  </div>
+  }
+
+  @if (isInProgress$ | async) {
+  <ng-template #uploadInProgress>
+    <mat-icon>
+      <span class="material-symbols-outlined">file_present</span>
+    </mat-icon>
+    <mat-progress-bar mode="determinate" class="mt-10">
+      Uploading... {{progress$ | async}}%
+    </mat-progress-bar>
+    <button mat-icon-button color="accent" (click)="resetUpload()">
+      <mat-icon>
+        <span class="material-symbols-outlined">refresh</span>
+      </mat-icon>
+    </button>
+  </ng-template>
+  }
+
+  @if (completed$ | async) {
+  <ng-template #uploadCompleted>
+    <mat-icon>
+      <span class="material-symbols-outlined">file_present</span>
+    </mat-icon>
+    <button mat-icon-button color="warn" (click)="cancelUpload()">
+      <mat-icon>
+        <span class="material-symbols-outlined">delete_forever</span>
+      </mat-icon>
+    </button>
+    <h5>File has been uploaded successfully</h5>
+    <div class="submit-btn flex gap-5">
+      <button mat-raised-button class="submit-btn" type="submit" color="primary" aria-label="submit"
+        (click)="uploadFile()">Submit</button>
+    </div>
+  </ng-template>
+  }
+
+  @if (hasFailed$ | async) {
+  <ng-template #uploadFailed>
+    <mat-icon color="warn">
+      <span class="material-symbols-outlined">scan_delete</span>
+    </mat-icon>
+    <button mat-icon-button color="warn" (click)="cancelUpload()">
+      <mat-icon>
+        <span class="material-symbols-outlined">delete_forever</span>
+      </mat-icon>
+    </button>
+    <p class="text-sm">Error: {{error$ | async}}</p>
+  </ng-template>
+  }
+</div>

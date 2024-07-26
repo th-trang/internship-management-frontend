@@ -5,7 +5,7 @@
       <h1 class="title">{{APP_NAME}}</h1>
       <mat-nav-list>
         @for (item of routes(); track item) {
-        <a mat-list-item (click)="navigateByRole(item.path)" [routerLinkActive]="['router-is-active']">
+        <a mat-list-item (click)="navigateByRole(item.path)" [routerLinkActive]="['router-is-active']" [ngClass]="{'selected-background': selectedItemPath === item.path}">
           <span style="color: white;" class="route-block mt-1">
             <span class="routes-icon mt-0.5">
               <mat-icon>

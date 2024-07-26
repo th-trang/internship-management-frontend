@@ -25,9 +25,10 @@ input[type="file"] {
     color: white;
 }
 
-.material-icons-outlined {
-    color: white;
-    font-size: 30px;
-    height: 30px;
-    width: 40px;
+mat-icon {
+    transform: scale(1.7);
+
+    .material-symbols-outlined {
+        color: white;
+    }
 }

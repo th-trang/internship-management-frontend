@@ -53,9 +53,10 @@ export class SeminarInvitationComponent implements OnInit{
 
   //testing function only to prove the work flow of the mat-card(s)
   //this function will be removed in the final version
+  //getStudentMeeting() should have a dynamic parameter instead of '1'
   isSettled() {
     this.isDateSettled = !this.isDateSettled;
-    this.studentService.getStudentMeeting('1').subscribe((res) => {
+    this.studentService.getStudentMeeting('2').subscribe((res) => {
       this.location.set(res.data.building);
       this.room.set(res.data.room);
       this.examiner1.set(res.data.teacher);

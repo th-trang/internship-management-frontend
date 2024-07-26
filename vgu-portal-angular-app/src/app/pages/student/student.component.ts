@@ -51,6 +51,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   name: any = signal('');
   menuOpen: boolean = false;
   private _mobileQueryListener: () => void;
+  selectedItemPath: string | null = null;
 
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
@@ -82,6 +83,7 @@ export class StudentComponent implements OnInit, OnDestroy {
   navigateByRole(childRoute: string) {
     const roleName = localStorage.getItem('ROLE');
     this.router.navigate([`/${roleName}/${childRoute}`]);
+    this.selectedItemPath = this.selectedItemPath === childRoute ? null : childRoute;
   }
 
   //function which returns the number of notifications to be displayed
